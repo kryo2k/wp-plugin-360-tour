@@ -13,10 +13,7 @@ if (! function_exists ( 'add_action' )) {
 }
 
 define ( "T360_I18N", 't360' );
-
-defined ( "T360_BASE_DIR" ) || define ( "T360_BASE_DIR", dirname ( __FILE__ ) );
-
-defined ( "T360_KEY_SETTINGS" ) || define ( "T360_KEY_SETTINGS", 't360-settings' );
+define ( "T360_KEY_SETTINGS", 't360-settings' );
 
 function t360_admin_init() {
 	global $wp_version;
@@ -145,6 +142,12 @@ function t360_get_baseurl() {
 function t360_get_siteid() {
 	return get_option ( 't360_siteid' );
 }
+function t360_site_header_style() {
+	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),"style.css"), false);
+}
+function t360_site_header_script() {
+	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),"script.js"), false);
+}
 function t360_site_init() {
 }
 function t360_controller_admin_boot() {
@@ -153,7 +156,11 @@ function t360_controller_admin_boot() {
 	add_filter ( 'plugin_action_links', 't360_admin_plugin_action_links', 10, 2 );
 }
 function t360_controller_site_boot() {
-	add_action ( 'init', 't360_site_init' );
+	if(!t360_get_enabled()) return;
+
+	add_action( 'init', 't360_site_init' );
+	add_action( 'wp_enqueue_scripts', 't360_site_header_style' );
+	add_action( 'wp_enqueue_scripts', 't360_site_header_script' );
 }
 
 // bootstrap the correct front-end controller:
