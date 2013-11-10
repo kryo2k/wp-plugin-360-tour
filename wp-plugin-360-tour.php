@@ -8,4 +8,4 @@
  * License: GPLv3
  */
 
-
+require_once 'settings.php';
