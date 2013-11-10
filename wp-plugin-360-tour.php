@@ -33,23 +33,30 @@ function t360_path_resource($filename) {
 }
 
 function t360_admin_menu() {
-	add_object_page( __( '360 Tour Manager', 't360' ), __( '360 Tour', 't360' ),
-	't360_read_contact_forms', 't360', 't360_admin_management_page',
+
+	if ( class_exists( 'Jetpack' ) ) {
+		add_submenu_page( 'jetpack', __( '360 Tour Manager' ), __( '360 Tour' ), 'manage_options', '360-tour-config', 't360_admin_view_manager' );
+	} else {
+		add_submenu_page('plugins.php', __('360 Tour Manager'), __('360 Tour'), 'manage_options', '360-tour-config', 't360_admin_view_manager');
+	}
+
+/*	add_object_page( __( '360 Tour Manager', 't360' ), __( '360 Tour', 't360' ),
+	't360_read_contact_forms', 't360', 't360_admin_view_manager',
 	t360_path_resource( 'image/admin/menu-icon.png' ) );
 
-	/*	$contact_form_admin = add_submenu_page( 't360',
-	 __( 'Edit Contact Forms', 't360' ), __( 'Edit', 't360' ),
-			't360_read_contact_forms', 't360', 't360_admin_management_page' ); */
+	$contact_form_admin = add_submenu_page( 't360',
+		 __( 'Edit Contact Forms', 't360' ), __( 'Edit', 't360' ),
+		't360_read_contact_forms', 't360', 't360_admin_management_page' );
 
-	//	add_action( 'load-' . $contact_form_admin, 't360_load_contact_form_admin' );
+	add_action( 'load-' . $contact_form_admin, 't360_load_contact_form_admin' ); */
 }
 
-function t360_admin_management_page() {
+function t360_admin_view_manager() {
 	echo "Hello World!";
 }
 
 function t360_controller_admin_boot() {
-	add_action( 'admin_menu', 't360_admin_menu', 9 );
+	add_action( 'admin_menu', 't360_admin_menu' );
 }
 
 function t360_controller_site_boot() {
