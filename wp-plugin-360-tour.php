@@ -8,21 +8,57 @@
  * License: GPLv3
  */
 
+if ( !function_exists( 'add_action' ) ) {
+	exit;
+}
+
 defined("T360_BASE_DIR") ||
-	define("T360_BASE_DIR", dirname(__FILE__));
+define("T360_BASE_DIR", dirname(__FILE__));
 
-// this should be the only relative path
-require_once T360_BASE_DIR . '/lib/functions.php';
+// @see http://stackoverflow.com/questions/1091107/how-to-join-filesystem-path-strings-in-php
+function t360_joinpath($path) {
+	return preg_replace ( '~[/\\\]+~', DIRECTORY_SEPARATOR, implode ( DIRECTORY_SEPARATOR, array_filter ( func_get_args (), function ($p) {
+		return $p !== '';
+	} ) ) );
+}
 
-// all other requires should use the `t360_path_lib` helper
-require_once t360_path_lib('wp/settings.php');
-require_once t360_path_lib('wp/hooks.php');
+function t360_file_base($filename) {
+	$args = func_get_args();
+	array_unshift($args, T360_BASE_DIR);
+	return call_user_func_array('t360_joinpath', $args);
+}
 
-// bootstrap the correct front-end controller:
-if ( is_admin() )
-	require_once t360_path_lib('wp/controller/admin.php');
-else
-	require_once t360_path_lib('wp/controller/site.php');
+function t360_path_resource($filename) {
+	return t360_file_base('res/', $filename);
+}
+
+function t360_admin_menu() {
+	add_object_page( __( '360 Tour Manager', 't360' ), __( '360 Tour', 't360' ),
+	't360_read_contact_forms', 't360', 't360_admin_management_page',
+	t360_path_resource( 'image/admin/menu-icon.png' ) );
+
+	/*	$contact_form_admin = add_submenu_page( 't360',
+	 __( 'Edit Contact Forms', 't360' ), __( 'Edit', 't360' ),
+			't360_read_contact_forms', 't360', 't360_admin_management_page' ); */
+
+	//	add_action( 'load-' . $contact_form_admin, 't360_load_contact_form_admin' );
+}
+
+function t360_admin_management_page() {
+	echo "Hello World!";
+}
+
+function t360_controller_admin_boot() {
+	add_action( 'admin_menu', 't360_admin_menu', 9 );
+}
+
+function t360_controller_site_boot() {
+}
 
 // initialize the main action:
 add_action( 'init', 't360_init' );
+function t360_init() {
+}
+
+// bootstrap the correct front-end controller:
+is_admin() ? t360_controller_admin_boot() : t360_controller_site_boot();
