@@ -8,7 +8,9 @@ function t360_joinpath($path) {
 }
 
 function t360_file_base($filename) {
-	return call_user_func_array('t360_joinpath', array_unshift(func_get_args(), T360_BASE_DIR));
+	$args = func_get_args();
+	array_unshift($args, T360_BASE_DIR);
+	return call_user_func_array('t360_joinpath', $args);
 }
 
 function t360_path_resource($filename) {
