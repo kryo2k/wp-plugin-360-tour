@@ -46,7 +46,7 @@
 .t360-promo-window a {
   right: 0;
   top: 0;
-  width: 1em;
+  width: 3em;
   font-size: 1.3em;
   line-height: 2em;
   outline: 1px solid blue;
@@ -63,7 +63,7 @@
   padding: 0;
   left: 0;
   top: 0;
-  right: 1em;
+  right: 3em;
   font-size: 1.3em;
   line-height: 2em;
   outline: 1px solid red;
