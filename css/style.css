@@ -25,9 +25,9 @@
   -ms-border-radius: 1em;
   -o-border-radius: 1em;
   border-radius: 1em;
-  -webkit-box-shadow: 2px 6px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 2px 6px rgba(0, 0, 0, 0.7);
-  box-shadow: 2px 6px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.7);
+  box-shadow: 4px 5px 15px rgba(0, 0, 0, 0.7);
 }
 /* line 35, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window .window-wrapper {
