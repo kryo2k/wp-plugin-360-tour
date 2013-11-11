@@ -1,6 +1,40 @@
 @CHARSET "ISO-8859-1";
+@import "compass/css3";
 
 $padding: 1em;
+
+.t360-overlay {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.t360-window {
+	position: fixed;
+	left: 10%;
+	right: 10%;
+	bottom: 10%;
+	top: 10%;
+	background-color: white;
+	@include border-radius(1em);
+
+	a {
+//		position: absolute;
+
+		&:before {
+			content: '\00D7';
+			display: inline-block;
+			font-size: 1em;
+		}
+	}
+	h3 {
+	}
+	iframe {
+	}
+}
 
 .t360-promo {
 	z-index: 9999;

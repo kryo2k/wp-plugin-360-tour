@@ -15,10 +15,12 @@
 		imageTitle: null,
 		imageWidth: null,
 		imageHeight: null,
+		windowWidth: '90%',
+		windowHeight: '90%',
+		windowHintClose: 'Close tour',
 		url: null
 	};
 	function unconfigure(me) {
-		console.log("unconfigure:", config);
 
 		if($el !== undefined) {
 			$el.remove();
@@ -28,7 +30,6 @@
 		return me;
 	}
 	function configure(me, cfg) {
-		console.log("configure:", cfg);
 
 		$.extend(config, cfg);
 
@@ -43,8 +44,30 @@
 		return $('<div><a><img/><a></div>')
 			.appendTo(sel);
 	}
+	function showTourWindow(tourUrl, baseCls, closeHint) {
+		var root = 'html';
+		$o = $('<div>').appendTo(root);
+		$w = $('<div><a></a><h3></h3><iframe /><div>')
+			.appendTo(root);
+
+		$o.addClass(baseCls + '-overlay')
+		$w.addClass(baseCls + '-window');
+		$w.find('a')
+			.attr({
+				title: closeHint,
+				href: '#close-tour'
+			})
+			.on('click', function(){
+				$w.remove();
+			});
+		$w.find('h3')
+			.html("Some title goes here");
+		$w.find('iframe')
+			.attr({
+				src: tourUrl
+			});
+	}
 	function render(me) {
-		console.log("render");
 
 		if( !config.enabled || !config.selector ) {
 			return me;
@@ -54,9 +77,10 @@
 			$el = createEl(config.selector);
 			$el.find('a')
 				.on('click',function(e){
-				e.preventDefault();
-				alert("This would do something with: " + config.url);
-			});
+					e.preventDefault();
+					showTourWindow(config.url, config.baseCls,
+							config.windowHintClose);
+				});
 		}
 
 		$el.toggleClass(config.baseCls, !$el.hasClass(config.baseCls))
