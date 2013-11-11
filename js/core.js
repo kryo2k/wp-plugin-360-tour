@@ -10,7 +10,7 @@
 		selector: 'header',
 		positionCls: 'bottom-right',
 		baseCls: 't360-promo',
-		hashmark: 't360-promo',
+		hashmark: 'launch-360-tour',
 		image: null,
 		imageTitle: null,
 		imageWidth: null,
