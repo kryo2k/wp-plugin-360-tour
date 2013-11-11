@@ -16,8 +16,6 @@
 		imageTitle: null,
 		imageWidth: null,
 		imageHeight: null,
-		windowWidth: '90%',
-		windowHeight: '90%',
 		windowHintClose: 'Close tour',
 		windowTitle: '360 Tour',
 		url: null
