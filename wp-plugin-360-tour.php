@@ -174,7 +174,8 @@ function t360_get_position() {
 	return get_option ( T360_SETTING_POSITION, 'bottom-right' );
 }
 function t360_get_image() {
-	return get_option ( T360_SETTING_IMAGE, 'default.png' );
+	return get_option ( T360_SETTING_IMAGE, path_join(plugin_dir_url(__FILE__),
+		"images/default.png") );
 }
 function t360_get_baseurl() {
 	return get_option ( T360_SETTING_BASEURL );
@@ -183,19 +184,23 @@ function t360_get_siteid() {
 	return get_option ( T360_SETTING_SITEID );
 }
 function t360_site_header_style() {
-	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),"css/style.css"), false);
+	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),
+		"css/style.css"), false);
 }
 function t360_site_header_script() {
-	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),"js/core.js"), false);
+	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),
+		"js/core.js"), false);
 }
 function t360_site_header_script_config() {
-	echo sprintf('<script type="text/javascript">window.t360_config = %s;</script>', json_encode(array(
-		'selector' => t360_get_targetselector(),
-		'position' => t360_get_position(),
-		'image' => t360_get_image(),
-		'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
-		'enabled' => t360_get_enabled()
-	)));
+	echo sprintf('<script type="text/javascript">window.t360_config = %s;</script>',
+			json_encode(array(
+			'selector' => t360_get_targetselector(),
+			'position' => t360_get_position(),
+			'image' => t360_get_image(),
+			'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
+			'enabled' => t360_get_enabled()
+		))
+	);
 }
 function t360_site_init() {
 }
