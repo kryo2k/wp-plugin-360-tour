@@ -183,10 +183,10 @@ function t360_get_siteid() {
 	return get_option ( T360_SETTING_SITEID );
 }
 function t360_site_header_style() {
-	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),"style.css"), false);
+	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),"css/style.css"), false);
 }
 function t360_site_header_script() {
-	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),"script.js"), false);
+	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),"js/core.js"), false);
 }
 function t360_site_header_script_config() {
 	echo sprintf('<script type="text/javascript">window.t360_config = %s;</script>', json_encode(array(
