@@ -110,22 +110,18 @@ $window-color-toolbar-fg: black;
 	&.bottom-right {
 		bottom: 0;
 		right: 0;
-		padding: 0 $padding $padding 0;
 	}
 	&.bottom-left {
 		bottom: 0;
 		left: 0;
-		padding: 0 0 $padding $padding;
 	}
 	&.top-right {
 		top: 0;
 		right: 0;
-		padding: $padding $padding 0 0;
 	}
 	&.top-left {
 		top: 0;
 		left: 0;
-		padding: $padding 0 0 $padding;
 	}
 
 	// link surrounding image
