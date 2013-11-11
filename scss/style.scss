@@ -3,6 +3,7 @@
 
 $padding: 1em;
 $window-head-height: 2em;
+$window-head-font-size: $window-head-height * 0.6;
 $window-color-bg: white;
 $window-color-fg: black;
 $window-color-toolbar-bg: #eee;
@@ -47,14 +48,14 @@ $window-color-toolbar-fg: black;
 	h3 {
 		background-color: $window-color-toolbar-bg;
 		color: $window-color-toolbar-fg;
+		font-size: $window-head-font-size;
+		line-height: $window-head-height;
 	}
 
 	a {
 		right: 0;
 		top: 0;
 		width: 3em;
-		font-size: 1.3em;
-		line-height: $window-head-height;
 
 		&:before {
 			content: '\00D7';
@@ -74,8 +75,9 @@ $window-color-toolbar-fg: black;
 		left: 0;
 		top: 0;
 		right: 3em;
-		font-size: 1.3em;
-		line-height: $window-head-height;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 	.iframe-wrapper {
 		position: absolute;
