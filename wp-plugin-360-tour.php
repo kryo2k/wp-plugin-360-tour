@@ -216,9 +216,9 @@ function t360_site_header_script_config() {
 	echo sprintf('<script type="text/javascript">window.t360_config = %s;</script>',
 			json_encode(array(
 			'selector' => t360_get_targetselector(),
-			'position' => t360_get_position(),
+			'positionCls' => t360_get_position(),
 			'image' => t360_get_image(),
-			'imagetitle' => t360_get_imagetitle(),
+			'imageTitle' => t360_get_imagetitle(),
 			'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
 			'enabled' => t360_get_enabled()
 		))
