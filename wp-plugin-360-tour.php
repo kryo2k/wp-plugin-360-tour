@@ -15,6 +15,13 @@ if (! function_exists ( 'add_action' )) {
 define ( "T360_I18N", 't360' );
 define ( "T360_KEY_SETTINGS", 't360-settings' );
 
+define ( "T360_SETTING_ENABLED",   't360_enabled' );
+define ( "T360_SETTING_SITEID",    't360_siteid' );
+define ( "T360_SETTING_BASEURL",   't360_baseurl' );
+define ( "T360_SETTING_TARGETSEL", 't360_targetselector' );
+define ( "T360_SETTING_POSITION",  't360_position' );
+define ( "T360_SETTING_IMAGE",     't360_image' );
+
 function t360_admin_init() {
 	global $wp_version;
 	if (! function_exists ( 'is_multisite' ) && version_compare ( $wp_version, '3.0', '<' )) {
@@ -51,13 +58,22 @@ function t360_admin_setting_section_general() {
 ?><p><?php esc_html_e( 'General settings for 360 tour plugin.', T360_I18N ); ?></p><?php
 }
 function t360_admin_setting_enabled() {
-	echo sprintf('<input name="%s" type="checkbox" value="1" class="code"%s>','t360_enabled', checked( 1, t360_get_enabled(), false ));
+	echo sprintf('<input name="%s" type="checkbox" value="1" class="code"%s>',T360_SETTING_ENABLED, checked( 1, t360_get_enabled(), false ));
 }
 function t360_admin_setting_siteid() {
-	echo sprintf('<input name="%s" type="text" value="%s">','t360_siteid', t360_get_siteid());
+	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_SITEID, t360_get_siteid());
 }
 function t360_admin_setting_baseurl() {
-	echo sprintf('<input name="%s" type="text" value="%s">','t360_baseurl', t360_get_baseurl());
+	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_BASEURL, t360_get_baseurl());
+}
+function t360_admin_setting_targetselector() {
+	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_TARGETSEL, t360_get_targetselector());
+}
+function t360_admin_setting_position() {
+	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_POSITION, t360_get_position());
+}
+function t360_admin_setting_image() {
+	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_IMAGE, t360_get_image());
 }
 function t360_admin_get_settings_sections() {
 	return (array) apply_filters('t360_admin_get_settings_sections', array(
@@ -70,22 +86,37 @@ function t360_admin_get_settings_sections() {
 function t360_admin_get_settings_fields() {
 	return (array) apply_filters('t360_admin_get_settings_fields', array(
 		't360_general' => array(
-			't360_enabled' => array(
+			T360_SETTING_ENABLED => array(
 				'title'             => __( 'Enable 360 tour plugin', T360_I18N ),
 				'callback'          => 't360_admin_setting_enabled',
 				'sanitize_callback' => 'intval',
 				'args'              => array()
 			),
-			't360_siteid' => array(
+			T360_SETTING_SITEID => array(
 				'title'             => __( 'Site id', T360_I18N ),
 				'callback'          => 't360_admin_setting_siteid',
 				'sanitize_callback' => 'trim',
 				'args'              => array()
 			),
-			't360_baseurl' => array(
+			T360_SETTING_BASEURL => array(
 				'title'             => __( 'Site url (%s is replaced by site id)', T360_I18N ),
 				'callback'          => 't360_admin_setting_baseurl',
 				'sanitize_callback' => 'trim',
+				'args'              => array()
+			),
+			T360_SETTING_TARGETSEL => array(
+				'title'             => __( 'jQuery target for 360 tour', T360_I18N ),
+				'callback'          => 't360_admin_setting_targetselector',
+				'args'              => array()
+			),
+			T360_SETTING_POSITION => array(
+				'title'             => __( 'Position of link', T360_I18N ),
+				'callback'          => 't360_admin_setting_position',
+				'args'              => array()
+			),
+			T360_SETTING_IMAGE => array(
+				'title'             => __( 'Image for link', T360_I18N ),
+				'callback'          => 't360_admin_setting_image',
 				'args'              => array()
 			)
 		)
@@ -134,19 +165,37 @@ function t360_admin_register_settings() {
 	}
 }
 function t360_get_enabled() {
-	return intval ( get_option ( 't360_enabled', 1 ) ) === 1;
+	return intval ( get_option ( T360_SETTING_ENABLED, 1 ) ) === 1;
+}
+function t360_get_targetselector() {
+	return get_option ( T360_SETTING_TARGETSEL, 'header' );
+}
+function t360_get_position() {
+	return get_option ( T360_SETTING_POSITION, 'bottom-right' );
+}
+function t360_get_image() {
+	return get_option ( T360_SETTING_IMAGE, 'default.png' );
 }
 function t360_get_baseurl() {
-	return get_option ( 't360_baseurl' );
+	return get_option ( T360_SETTING_BASEURL );
 }
 function t360_get_siteid() {
-	return get_option ( 't360_siteid' );
+	return get_option ( T360_SETTING_SITEID );
 }
 function t360_site_header_style() {
 	wp_enqueue_style('t360', path_join(plugin_dir_url(__FILE__),"style.css"), false);
 }
 function t360_site_header_script() {
 	wp_enqueue_script('t360', path_join(plugin_dir_url(__FILE__),"script.js"), false);
+}
+function t360_site_header_script_config() {
+	echo sprintf('<script type="text/javascript">window.t360_config = %s;</script>', json_encode(array(
+		'selector' => t360_get_targetselector(),
+		'position' => t360_get_position(),
+		'image' => t360_get_image(),
+		'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
+		'enabled' => t360_get_enabled()
+	)));
 }
 function t360_site_init() {
 }
@@ -161,6 +210,7 @@ function t360_controller_site_boot() {
 	add_action( 'init', 't360_site_init' );
 	add_action( 'wp_enqueue_scripts', 't360_site_header_style' );
 	add_action( 'wp_enqueue_scripts', 't360_site_header_script' );
+	add_action( 'wp_head', 't360_site_header_script_config' );
 }
 
 // bootstrap the correct front-end controller:
