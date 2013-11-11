@@ -21,6 +21,7 @@ define ( "T360_SETTING_BASEURL",   't360_baseurl' );
 define ( "T360_SETTING_TARGETSEL", 't360_targetselector' );
 define ( "T360_SETTING_POSITION",  't360_position' );
 define ( "T360_SETTING_IMAGE",     't360_image' );
+define ( "T360_SETTING_IMAGETITLE",'t360_imagetitle' );
 
 function t360_admin_init() {
 	global $wp_version;
@@ -57,29 +58,39 @@ submit_button();
 function t360_admin_setting_section_general() {
 ?><p><?php esc_html_e( 'General settings for 360 tour plugin.', T360_I18N ); ?></p><?php
 }
+function t360_admin_setting_section_image() {
+?><p><?php esc_html_e( 'Image settings for 360 tour plugin.', T360_I18N ); ?></p><?php
+}
 function t360_admin_setting_enabled() {
 	echo sprintf('<input name="%s" type="checkbox" value="1" class="code"%s>',T360_SETTING_ENABLED, checked( 1, t360_get_enabled(), false ));
 }
 function t360_admin_setting_siteid() {
-	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_SITEID, t360_get_siteid());
+	echo sprintf('<input name="%s" size="40" type="text" value="%s">',T360_SETTING_SITEID, t360_get_siteid());
 }
 function t360_admin_setting_baseurl() {
-	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_BASEURL, t360_get_baseurl());
+	echo sprintf('<input name="%s" size="50" type="text" value="%s">',T360_SETTING_BASEURL, t360_get_baseurl());
 }
 function t360_admin_setting_targetselector() {
-	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_TARGETSEL, t360_get_targetselector());
+	echo sprintf('<input name="%s" size="50" type="text" value="%s">',T360_SETTING_TARGETSEL, t360_get_targetselector());
 }
 function t360_admin_setting_position() {
-	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_POSITION, t360_get_position());
+	echo sprintf('<input name="%s" size="40" type="text" value="%s">',T360_SETTING_POSITION, t360_get_position());
 }
 function t360_admin_setting_image() {
-	echo sprintf('<input name="%s" type="text" value="%s">',T360_SETTING_IMAGE, t360_get_image());
+	echo sprintf('<input name="%s" size="75" type="text" value="%s">',T360_SETTING_IMAGE, t360_get_image());
+}
+function t360_admin_setting_imagetitle() {
+	echo sprintf('<input name="%s" size="75" type="text" value="%s">',T360_SETTING_IMAGETITLE, t360_get_imagetitle());
 }
 function t360_admin_get_settings_sections() {
 	return (array) apply_filters('t360_admin_get_settings_sections', array(
 		't360_general' => array(
-			'title'    => __( '360 tour settings', T360_I18N ),
+			'title'    => __( 'General settings', T360_I18N ),
 			'callback' => 't360_admin_setting_section_general'
+		),
+		't360_image' => array(
+			'title'    => __( 'Image settings', T360_I18N ),
+			'callback' => 't360_admin_setting_section_image'
 		)
 	));
 }
@@ -108,7 +119,9 @@ function t360_admin_get_settings_fields() {
 				'title'             => __( 'jQuery target for 360 tour', T360_I18N ),
 				'callback'          => 't360_admin_setting_targetselector',
 				'args'              => array()
-			),
+			)
+		),
+		't360_image' => array(
 			T360_SETTING_POSITION => array(
 				'title'             => __( 'Position of link', T360_I18N ),
 				'callback'          => 't360_admin_setting_position',
@@ -117,6 +130,11 @@ function t360_admin_get_settings_fields() {
 			T360_SETTING_IMAGE => array(
 				'title'             => __( 'Image for link', T360_I18N ),
 				'callback'          => 't360_admin_setting_image',
+				'args'              => array()
+			),
+			T360_SETTING_IMAGETITLE => array(
+				'title'             => __( 'Image title for link', T360_I18N ),
+				'callback'          => 't360_admin_setting_imagetitle',
 				'args'              => array()
 			)
 		)
@@ -177,6 +195,9 @@ function t360_get_image() {
 	return get_option ( T360_SETTING_IMAGE, path_join(plugin_dir_url(__FILE__),
 		"images/default.png") );
 }
+function t360_get_imagetitle() {
+	return get_option ( T360_SETTING_IMAGETITLE, "360 Tour" );
+}
 function t360_get_baseurl() {
 	return get_option ( T360_SETTING_BASEURL );
 }
@@ -197,6 +218,7 @@ function t360_site_header_script_config() {
 			'selector' => t360_get_targetselector(),
 			'position' => t360_get_position(),
 			'image' => t360_get_image(),
+			'imagetitle' => t360_get_imagetitle(),
 			'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
 			'enabled' => t360_get_enabled()
 		))
