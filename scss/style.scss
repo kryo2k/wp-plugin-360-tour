@@ -105,6 +105,14 @@ $window-color-toolbar-fg: black;
 		display: block;
 	}
 
+	&.inline-block {
+		display: inline-block;
+	}
+
+	&.inline {
+		display: inline;
+	}
+
 	// specific position properties:
 	&.bottom-right {
 		bottom: 0;
