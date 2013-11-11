@@ -18,6 +18,7 @@
 		windowWidth: '90%',
 		windowHeight: '90%',
 		windowHintClose: 'Close tour',
+		windowHeaderTitle: '360 Tour'
 		url: null
 	};
 	function unconfigure(me) {
@@ -44,8 +45,9 @@
 		return $('<div><a><img/><a></div>')
 			.appendTo(sel);
 	}
-	function showTourWindow(tourUrl, baseCls, closeHint) {
-		var $o, $w, root = 'html', closeWin = function(){
+	function showTourWindow(tourUrl, baseCls, closeHint, windowTitle) {
+		var $o, $w, root = 'html', closeWin = function(e){
+			e.preventDefault();
 			$o.remove();
 			$w.remove();
 		};
@@ -63,7 +65,7 @@
 			})
 			.on('click', closeWin);
 		$w.find('h3')
-			.html("Some title goes here");
+			.html(windowTitle);
 		$w.find('iframe')
 			.attr({
 				src: tourUrl,
@@ -82,7 +84,7 @@
 				.on('click',function(e){
 					e.preventDefault();
 					showTourWindow(config.url, config.baseCls,
-							config.windowHintClose);
+							config.windowHintClose, config.windowHeaderTitle);
 				});
 		}
 
