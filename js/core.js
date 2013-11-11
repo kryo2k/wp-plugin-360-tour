@@ -50,7 +50,7 @@
 			$w.remove();
 		};
 		$o = $('<div>').appendTo(root);
-		$w = $('<div><a></a><h3></h3><iframe /><div>')
+		$w = $('<div><a></a><h3></h3><div class="iframe-wrapper"><iframe /></div><div>')
 			.appendTo(root);
 
 		$o.addClass(baseCls + '-overlay')

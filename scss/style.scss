@@ -55,8 +55,18 @@ $padding: 1em;
 		line-height: 2em;
 		outline: 1px solid red;
 	}
-	iframe {
+	.iframe-wrapper {
 		outline: 1px solid orange;
+		position: fixed;
+		top: 2em;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		iframe {
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 
