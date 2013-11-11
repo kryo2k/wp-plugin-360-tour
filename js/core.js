@@ -18,7 +18,7 @@
 		windowWidth: '90%',
 		windowHeight: '90%',
 		windowHintClose: 'Close tour',
-		windowHeaderTitle: '360 Tour'
+		windowHeaderTitle: '360 Tour',
 		url: null
 	};
 	function unconfigure(me) {
