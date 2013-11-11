@@ -21,9 +21,15 @@ $padding: 1em;
 	bottom: 10%;
 	top: 10%;
 	background-color: white;
-	padding: $padding;
 	@include border-radius(1em);
-	
+
+	.window-wrapper {
+		margin: $padding;
+		position: absolute;
+		left:0; right: 0; bottom: 0; top: 0;
+		outline: 1px solid green;
+	}
+
 	a,
 	h3,
 	iframe {
