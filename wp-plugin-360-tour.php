@@ -198,7 +198,7 @@ function t360_get_targetselector() {
 	return get_option ( T360_SETTING_TARGETSEL, 'header' );
 }
 function t360_get_position() {
-	return get_option ( T360_SETTING_POSITION, 'bottom-right' );
+	return get_option ( T360_SETTING_POSITION, 'inline' );
 }
 function t360_get_image() {
 	return get_option ( T360_SETTING_IMAGE, path_join(plugin_dir_url(__FILE__),
