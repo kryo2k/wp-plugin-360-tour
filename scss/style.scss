@@ -22,10 +22,15 @@ $padding: 1em;
 	top: 10%;
 	background-color: white;
 	@include border-radius(1em);
+	
+	a,
+	h3,
+	iframe {
+		position: absolute;
+		display: block;
+	}
 
 	a {
-//		position: absolute;
-
 		&:before {
 			content: '\00D7';
 			display: inline-block;
@@ -33,6 +38,8 @@ $padding: 1em;
 		}
 	}
 	h3 {
+		margin: 0;
+		padding: 0;
 	}
 	iframe {
 	}

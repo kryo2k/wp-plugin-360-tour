@@ -45,22 +45,23 @@
 			.appendTo(sel);
 	}
 	function showTourWindow(tourUrl, baseCls, closeHint) {
-		var root = 'html';
+		var $o, $w, root = 'html', closeWin = function(){
+			$o.remove();
+			$w.remove();
+		};
 		$o = $('<div>').appendTo(root);
 		$w = $('<div><a></a><h3></h3><iframe /><div>')
 			.appendTo(root);
 
 		$o.addClass(baseCls + '-overlay')
+			.on('click', closeWin);
 		$w.addClass(baseCls + '-window');
 		$w.find('a')
 			.attr({
 				title: closeHint,
 				href: '#close-tour'
 			})
-			.on('click', function(){
-				$o.remove();
-				$w.remove();
-			});
+			.on('click', closeWin);
 		$w.find('h3')
 			.html("Some title goes here");
 		$w.find('iframe')
