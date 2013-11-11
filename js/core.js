@@ -41,7 +41,7 @@
 		return me; // return latest config
 	}
 	function createEl(sel) {
-		return $('<div><a><img/><a></div>')
+		return $('<div><a><img/></a></div>')
 			.appendTo(sel);
 	}
 	function showTourWindow(tourUrl, baseCls, closeHint, windowTitle) {
