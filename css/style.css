@@ -71,7 +71,7 @@
 /* line 64, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window .iframe-wrapper {
   outline: 1px solid orange;
-  position: fixed;
+  position: absolute;
   top: 2em;
   left: 0;
   right: 0;
