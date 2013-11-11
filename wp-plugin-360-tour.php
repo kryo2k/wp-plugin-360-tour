@@ -22,6 +22,7 @@ define ( "T360_SETTING_TARGETSEL", 't360_targetselector' );
 define ( "T360_SETTING_POSITION",  't360_position' );
 define ( "T360_SETTING_IMAGE",     't360_image' );
 define ( "T360_SETTING_IMAGETITLE",'t360_imagetitle' );
+define ( "T360_SETTING_WINDOWTITLE",'t360_windowtitle' );
 
 function t360_admin_init() {
 	global $wp_version;
@@ -82,6 +83,9 @@ function t360_admin_setting_image() {
 function t360_admin_setting_imagetitle() {
 	echo sprintf('<input name="%s" size="75" type="text" value="%s">',T360_SETTING_IMAGETITLE, t360_get_imagetitle());
 }
+function t360_admin_setting_windowtitle() {
+	echo sprintf('<input name="%s" size="75" type="text" value="%s">',T360_SETTING_WINDOWTITLE, t360_get_windowtitle());
+}
 function t360_admin_get_settings_sections() {
 	return (array) apply_filters('t360_admin_get_settings_sections', array(
 		't360_general' => array(
@@ -118,6 +122,11 @@ function t360_admin_get_settings_fields() {
 			T360_SETTING_TARGETSEL => array(
 				'title'             => __( 'jQuery target for 360 tour', T360_I18N ),
 				'callback'          => 't360_admin_setting_targetselector',
+				'args'              => array()
+			),
+			T360_SETTING_WINDOWTITLE => array(
+				'title'             => __( 'Title for pop-up window', T360_I18N ),
+				'callback'          => 't360_admin_setting_windowtitle',
 				'args'              => array()
 			)
 		),
@@ -198,6 +207,9 @@ function t360_get_image() {
 function t360_get_imagetitle() {
 	return get_option ( T360_SETTING_IMAGETITLE, "360 Tour" );
 }
+function t360_get_windowtitle() {
+	return get_option ( T360_SETTING_WINDOWTITLE, "360 Tour" );
+}
 function t360_get_baseurl() {
 	return get_option ( T360_SETTING_BASEURL );
 }
@@ -219,6 +231,7 @@ function t360_site_header_script_config() {
 			'positionCls' => t360_get_position(),
 			'image' => t360_get_image(),
 			'imageTitle' => t360_get_imagetitle(),
+			'windowTitle' => t360_get_windowtitle(),
 			'url' => sprintf( t360_get_baseurl(), t360_get_siteid() ),
 			'enabled' => t360_get_enabled()
 		))
