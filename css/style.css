@@ -1,5 +1,5 @@
 @CHARSET "ISO-8859-1";
-/* line 6, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 7, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-overlay {
   z-index: 9998;
   position: fixed;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* line 16, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 17, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window {
   z-index: 9999;
   position: fixed;
@@ -25,7 +25,7 @@
   -o-border-radius: 1em;
   border-radius: 1em;
 }
-/* line 26, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 27, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window .window-wrapper {
   margin: 1em;
   position: absolute;
@@ -35,14 +35,14 @@
   top: 0;
   outline: 1px solid green;
 }
-/* line 35, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 36, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window a,
 .t360-promo-window h3,
 .t360-promo-window iframe {
   position: absolute;
   display: block;
 }
-/* line 40, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 41, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window a {
   right: 0;
   top: 0;
@@ -51,13 +51,20 @@
   line-height: 2em;
   outline: 1px solid blue;
 }
-/* line 48, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 49, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window a:before {
   content: '\00D7';
-  display: inline-block;
+  display: block;
   font-size: 1em;
+  text-align: center;
 }
-/* line 54, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 55, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+.t360-promo-window a:hover {
+  background: black;
+  color: white;
+  text-decoration: none;
+}
+/* line 61, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window h3 {
   margin: 0;
   padding: 0;
@@ -68,7 +75,7 @@
   line-height: 2em;
   outline: 1px solid red;
 }
-/* line 64, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 71, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window .iframe-wrapper {
   outline: 1px solid orange;
   position: absolute;
@@ -77,51 +84,51 @@
   right: 0;
   bottom: 0;
 }
-/* line 72, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 79, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo-window .iframe-wrapper iframe {
   width: 100%;
   height: 100%;
 }
 
-/* line 79, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 86, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo {
   z-index: 9997;
 }
-/* line 86, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 93, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo.bottom-right, .t360-promo.bottom-left, .t360-promo.top-right, .t360-promo.top-left {
   position: absolute;
   display: block;
 }
-/* line 92, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 99, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo.bottom-right {
   bottom: 0;
   right: 0;
   padding: 0 1em 1em 0;
 }
-/* line 97, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 104, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo.bottom-left {
   bottom: 0;
   left: 0;
   padding: 0 0 1em 1em;
 }
-/* line 102, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 109, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo.top-right {
   top: 0;
   right: 0;
   padding: 1em 1em 0 0;
 }
-/* line 107, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 114, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo.top-left {
   top: 0;
   left: 0;
   padding: 1em 0 0 1em;
 }
-/* line 114, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 121, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo a {
   border: none;
   display: block;
 }
-/* line 120, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
+/* line 127, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
 .t360-promo img {
   border: none;
 }

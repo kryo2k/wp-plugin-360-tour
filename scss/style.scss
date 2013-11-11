@@ -2,6 +2,7 @@
 @import "compass/css3";
 
 $padding: 1em;
+$window-head-height: 2em;
 
 .t360-promo-overlay {
 	z-index: 9998;
@@ -42,13 +43,19 @@ $padding: 1em;
 		top: 0;
 		width: 3em;
 		font-size: 1.3em;
-		line-height: 2em;
+		line-height: $window-head-height;
 		outline: 1px solid blue;
 
 		&:before {
 			content: '\00D7';
-			display: inline-block;
+			display: block;
 			font-size: 1em;
+			text-align: center;
+		}
+		&:hover {
+			background: black;
+			color: white;
+			text-decoration: none;
 		}
 	}
 	h3 {
@@ -58,13 +65,13 @@ $padding: 1em;
 		top: 0;
 		right: 3em;
 		font-size: 1.3em;
-		line-height: 2em;
+		line-height: $window-head-height;
 		outline: 1px solid red;
 	}
 	.iframe-wrapper {
 		outline: 1px solid orange;
 		position: absolute;
-		top: 2em + $padding;
+		top: $window-head-height + $padding;
 		left: 0;
 		right: 0;
 		bottom: 0;
