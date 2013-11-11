@@ -10,6 +10,7 @@
 		selector: 'header',
 		positionCls: 'bottom-right',
 		baseCls: 't360-promo',
+		simpleDlgBaseCls: 'simple-dialog',
 		hashmark: 'launch-360-tour',
 		image: null,
 		imageTitle: null,
@@ -52,22 +53,27 @@
 			$w.remove();
 		};
 		$o = $('<div>').appendTo(root);
-		$w = $('<div><div class="window-wrapper"><a></a><h3></h3><div class="iframe-wrapper"><iframe /></div></div><div>')
+		$w = $(['<div class="'+baseCls+'-window">',
+		 	'<div class="'+baseCls+'-window-wrapper">',
+		 		'<a class="'+baseCls+'-button"></a>',
+		 		'<h3 class="'+baseCls+'-title"></h3>',
+		 		'<div class="'+baseCls+'-body-wrapper">',
+		 			'<iframe />',
+		 		'</div>',
+		 	'</div>',
+		 '</div>'].join(''))
 			.appendTo(root);
 
-		$o.addClass(baseCls + '-overlay')
-			.on('click', closeWin);
-		$w.addClass(baseCls + '-window');
-		$w.find('a')
-			.attr({
+		$o.addClass(baseCls + '-overlay').on('click', closeWin);
+
+		$w.find('a').attr({
 				title: closeHint,
 				href: '#close-tour'
-			})
-			.on('click', closeWin);
-		$w.find('h3')
-			.html(windowTitle);
-		$w.find('iframe')
-			.attr({
+			}).on('click', closeWin);
+
+		$w.find('h3').html(windowTitle);
+
+		$w.find('iframe').attr({
 				src: tourUrl,
 				frameborder: 0
 			});
@@ -83,7 +89,7 @@
 			$el.find('a')
 				.on('click',function(e){
 					e.preventDefault();
-					showTourWindow(config.url, config.baseCls,
+					showTourWindow(config.url, config.simpleDlgBaseCls,
 							config.windowHintClose, config.windowTitle);
 				});
 		}
