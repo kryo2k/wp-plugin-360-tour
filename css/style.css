@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 /* line 6, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
-.t360-overlay {
+.t360-promo-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -10,7 +10,7 @@
 }
 
 /* line 15, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
-.t360-window {
+.t360-promo-window {
   position: fixed;
   left: 10%;
   right: 10%;
@@ -24,7 +24,7 @@
   border-radius: 1em;
 }
 /* line 27, C:/Users/Hans Doller/Documents/GitHub/wp-plugin-360-tour/scss/style.scss */
-.t360-window a:before {
+.t360-promo-window a:before {
   content: '\00D7';
   display: inline-block;
   font-size: 1em;
