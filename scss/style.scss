@@ -28,7 +28,6 @@ $window-head-height: 2em;
 		margin: $padding;
 		position: absolute;
 		left:0; right: 0; bottom: 0; top: 0;
-		outline: 1px solid green;
 	}
 
 	a,
@@ -44,7 +43,6 @@ $window-head-height: 2em;
 		width: 3em;
 		font-size: 1.3em;
 		line-height: $window-head-height;
-		outline: 1px solid blue;
 
 		&:before {
 			content: '\00D7';
@@ -66,10 +64,8 @@ $window-head-height: 2em;
 		right: 3em;
 		font-size: 1.3em;
 		line-height: $window-head-height;
-		outline: 1px solid red;
 	}
 	.iframe-wrapper {
-		outline: 1px solid orange;
 		position: absolute;
 		top: $window-head-height + $padding;
 		left: 0;
