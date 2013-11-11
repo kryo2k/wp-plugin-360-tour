@@ -21,6 +21,7 @@ $padding: 1em;
 	bottom: 10%;
 	top: 10%;
 	background-color: white;
+	padding: $padding;
 	@include border-radius(1em);
 	
 	a,
@@ -31,6 +32,11 @@ $padding: 1em;
 	}
 
 	a {
+		right: 0;
+		top: 0;
+		left: 80%;
+		outline: 1px solid blue;
+
 		&:before {
 			content: '\00D7';
 			display: inline-block;
@@ -40,8 +46,15 @@ $padding: 1em;
 	h3 {
 		margin: 0;
 		padding: 0;
+		left: 0;
+		top: 0;
+		right: 80%;
+		font-size: 1.3em;
+		line-height: 2em;
+		outline: 1px solid red;
 	}
 	iframe {
+		outline: 1px solid orange;
 	}
 }
 

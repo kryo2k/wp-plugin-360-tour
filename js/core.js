@@ -66,7 +66,8 @@
 			.html("Some title goes here");
 		$w.find('iframe')
 			.attr({
-				src: tourUrl
+				src: tourUrl,
+				frameborder: 0
 			});
 	}
 	function render(me) {
