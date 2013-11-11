@@ -54,7 +54,7 @@
 		};
 		$o = $('<div>').appendTo(root);
 		$w = $(['<div class="'+baseCls+'-window">',
-		 	'<div class="'+baseCls+'-window-wrapper">',
+		 	'<div class="'+baseCls+'-wrapper">',
 		 		'<a class="'+baseCls+'-button"></a>',
 		 		'<h3 class="'+baseCls+'-title"></h3>',
 		 		'<div class="'+baseCls+'-body-wrapper">',
