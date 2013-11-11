@@ -116,7 +116,6 @@
 		var me = this;
 
 		me.reconfigure = function(cfg, performRender) {
-			console.log("reconfigure");
 			unconfigure(me);
 			configure(me, cfg);
 			return performRender ? render(me) : me;
