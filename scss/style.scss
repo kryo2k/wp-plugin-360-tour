@@ -3,6 +3,11 @@
 
 $padding: 1em;
 $window-head-height: 2em;
+$window-color-bg: white;
+$window-color-fg: black;
+$window-color-toolbar-bg: #eee;
+$window-color-toolbar-fg: black;
+
 
 .t360-promo-overlay {
 	z-index: 9998;
@@ -21,7 +26,8 @@ $window-head-height: 2em;
 	right: 10%;
 	bottom: 10%;
 	top: 10%;
-	background-color: white;
+	background-color: $window-color-bg;
+	color: $window-color-fg;
 	@include border-radius(1em);
 
 	.window-wrapper {
@@ -35,6 +41,12 @@ $window-head-height: 2em;
 	iframe {
 		position: absolute;
 		display: block;
+	}
+	
+	a,
+	h3 {
+		background-color: $window-color-toolbar-bg;
+		color: $window-color-toolbar-fg;
 	}
 
 	a {
@@ -58,7 +70,7 @@ $window-head-height: 2em;
 	}
 	h3 {
 		margin: 0;
-		padding: 0;
+		padding: 0 1em;
 		left: 0;
 		top: 0;
 		right: 3em;
