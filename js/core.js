@@ -58,6 +58,7 @@
 				href: '#close-tour'
 			})
 			.on('click', function(){
+				$o.remove();
 				$w.remove();
 			});
 		$w.find('h3')

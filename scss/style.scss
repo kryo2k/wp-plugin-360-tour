@@ -4,6 +4,7 @@
 $padding: 1em;
 
 .t360-promo-overlay {
+	z-index: 9998;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -13,6 +14,7 @@ $padding: 1em;
 }
 
 .t360-promo-window {
+	z-index: 9999;
 	position: fixed;
 	left: 10%;
 	right: 10%;
@@ -37,7 +39,7 @@ $padding: 1em;
 }
 
 .t360-promo {
-	z-index: 9999;
+	z-index: 9997;
 
 	// common position properties:
 	&.bottom-right,
