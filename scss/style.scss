@@ -3,7 +3,6 @@
 
 .t360-promo {
 
-	// common position properties:
 	&.bottom-right,
 	&.bottom-left,
 	&.top-right,
@@ -20,7 +19,6 @@
 		display: inline;
 	}
 
-	// specific position properties:
 	&.bottom-right {
 		bottom: 0;
 		right: 0;
@@ -38,13 +36,11 @@
 		left: 0;
 	}
 
-	// link surrounding image
 	a {
 		border: none;
 		display: block;
 	}
 
-	// promo image
 	img {
 		border: none;
 	}
